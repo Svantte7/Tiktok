@@ -13,18 +13,19 @@ WordPress + Elementor + WooCommerce -toteutus; uusi rakennetaan Lovablella
 | Kaiken sisällön keruu (EN + FI, sanatarkka) | ✅ valmis → `docs/CONTENT.md` |
 | Kuvien lataus + optimointi (~10 Mt → ~1,1 Mt) | ✅ valmis → `assets/images/` |
 | Lovable-projekti luotu + kuvat ladattu | ✅ "Atelier Brilliance" |
-| Sivun generointi Lovablella | ⛔ **estetty: työtila ilman krediittejä** |
-| Kaksikielisyys (EN oletus + FI-vaihto) | määritelty, odottaa buildia |
+| Sivun generointi Lovablella | ✅ **valmis (kaikki 8 sivua)** |
+| Kaksikielisyys (EN oletus + FI-vaihto) | ✅ toimii (`src/lib/i18n.tsx`) |
+| Julkaistu jaettava demo | ✅ https://old-town-atelier-parfums.lovable.app |
 | Verkkokauppa | ⏳ myöhempi vaihe (asiakkaan pyyntö) |
 
-## ⛔ Seuraava askel — vaatii sinua
+## 🔗 Demo
 
-Lovable-työtilasta ("Jesse's Lovable", free-plan) **loppuivat krediitit**,
-joten agentti ei voi generoida sivua. Kun olet lisännyt krediittejä
-(`https://lovable.dev/settings/billing`), sivu rakentuu yhdellä viestillä:
-lähetä `docs/LOVABLE-BUILD-PROMPT.md`:n viesti projektiin
-**"Atelier Brilliance"** (`lovable.dev/projects/87a43982-089c-423a-b71b-ae41f8fed900`).
-Kaikki tekstit, kuvat ja tyyliohjeet ovat valmiina tässä repossa.
+- **Julkinen demo:** https://old-town-atelier-parfums.lovable.app
+- **Esikatselu:** https://id-preview--87a43982-089c-423a-b71b-ae41f8fed900.lovable.app
+- **Lovable-editori:** https://lovable.dev/projects/87a43982-089c-423a-b71b-ae41f8fed900
+
+Rakennettu 2026-07-08, ~2,1 Lovable-krediittiä. Kaikki tekstit sanatarkkoja
+(EN + FI), oikeat optimoidut kuvat, tyyli ja tunnelma säilytetty.
 
 ## Hakemistot
 
