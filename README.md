@@ -15,14 +15,18 @@ WordPress + Elementor + WooCommerce -toteutus; uusi rakennetaan Lovablella
 | Lovable-projekti luotu + kuvat ladattu | ✅ "Atelier Brilliance" |
 | Sivun generointi Lovablella | ✅ **valmis (kaikki 8 sivua)** |
 | Kaksikielisyys (EN oletus + FI-vaihto) | ✅ toimii (`src/lib/i18n.tsx`) |
-| Julkaistu jaettava demo | ✅ https://old-town-atelier-parfums.lovable.app |
+| Demo | ✅ rakennettu (julkaisu otettu alas — yksityinen) |
 | Verkkokauppa | ⏳ myöhempi vaihe (asiakkaan pyyntö) |
 
-## 🔗 Demo
+## 🔗 Demo (yksityinen)
 
-- **Julkinen demo:** https://old-town-atelier-parfums.lovable.app
-- **Esikatselu:** https://id-preview--87a43982-089c-423a-b71b-ae41f8fed900.lovable.app
+Julkinen `.lovable.app`-julkaisu on otettu alas. Demoa pääsee katsomaan vain
+Lovable-työtilan jäsenet:
+
+- **Esikatselu (vaatii kirjautumisen):** https://id-preview--87a43982-089c-423a-b71b-ae41f8fed900.lovable.app
 - **Lovable-editori:** https://lovable.dev/projects/87a43982-089c-423a-b71b-ae41f8fed900
+
+Voi julkaista uudelleen milloin vain (Lovable → Publish).
 
 Rakennettu 2026-07-08, ~2,1 Lovable-krediittiä. Kaikki tekstit sanatarkkoja
 (EN + FI), oikeat optimoidut kuvat, tyyli ja tunnelma säilytetty.
