@@ -1,8 +1,9 @@
 # pakuavuksi.fi
 
 Tmi Jarno ja pakuavuksi -yrityksen verkkosivusto. Staattinen, monisivuinen ja
-hakukoneoptimoitu sivusto ilman ulkoisia riippuvuuksia — ei verkkofontteja,
-ei seurantaskriptejä, ei JavaScript-kehyksiä.
+hakukoneoptimoitu sivusto ilman ulkoisia riippuvuuksia — kirjasimet
+isännöidään itse, ei seurantaskriptejä eikä JavaScript-kehyksiä. Sivusto ei
+tee yhtään pyyntöä oman palvelimensa ulkopuolelle.
 
 ## Sivut
 
@@ -39,12 +40,31 @@ on säilytetty sellaisinaan, jotta hakukonenäkyvyys ei katoa uudistuksessa.
 - Semanttinen HTML, yksi `<h1>` sivua kohti, murupolut
 - Ei render-estäviä ulkoisia resursseja
 
+## Typografia
+
+Kolme roolia, jotta sivu ei nojaa yhteen yleiskäyttöiseen groteskiin:
+
+| Rooli | Kirjasin | Missä |
+|---|---|---|
+| Otsikot ja luvut | Barlow Condensed Bold | Otsikot, hinnat, tunnusluvut |
+| Käyttöliittymä | Barlow Medium / SemiBold | Navigaatio, painikkeet, etiketit |
+| Leipäteksti | Source Serif 4 | Kappaleet, listat, kuvaukset |
+
+Barlow Condensed on kavennettu groteski, jonka muotokieli tulee liikenne- ja
+opastekylteistä — se sopii kuljetusalan yritykselle ja kestää isot otsikkokoot
+ilman että rivit karkaavat leveyteen. Antiikva leipätekstissä tekee pitkistä
+kappaleista helpompia lukea ja erottaa sivun tavanomaisesta.
+
+Kirjasimet ovat SIL Open Font License -lisensoituja, karsittu tarvittavaan
+merkistöön ja tarjoillaan woff2-muodossa omalta palvelimelta (yhteensä noin
+110 kt). Tarkemmat tiedot: `assets/fonts/README.md`.
+
 ## Logo
 
 Logo on eurooppalainen pakettiauto sivuprofiilina ja nimi pienenä kursiivina
-aivan sen perässä. Teksti on muunnettu poluiksi (Liberation Sans Bold Italic,
-metrisesti sama kuin Arial Bold Italic), joten logo näyttää samalta joka
-koneella ja painossa — fonttia ei tarvitse asentaa.
+aivan sen perässä. Teksti on muunnettu poluiksi (Barlow SemiBold Italic, sama
+kirjasin jota sivusto käyttää käyttöliittymässä), joten logo näyttää samalta
+joka koneella ja painossa — fonttia ei tarvitse asentaa.
 
 | Tiedosto | Käyttö |
 |---|---|

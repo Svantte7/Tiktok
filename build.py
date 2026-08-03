@@ -278,6 +278,8 @@ TEMPLATE = """<!DOCTYPE html>
     <meta name="twitter:description" content="{description}">
     <meta name="twitter:image" content="{base}/assets/img/og-image.png">
 
+    <link rel="preload" href="/assets/fonts/barlowcondensed-700.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/sourceserif4-400.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
     <link rel="stylesheet" href="/assets/css/style.css">
@@ -299,7 +301,7 @@ TEMPLATE = """<!DOCTYPE html>
         <nav class="nav" aria-label="Päävalikko">
             <a class="brand" href="/" aria-label="Pakuavuksi &ndash; etusivulle">
                 <img class="brand__logo" src="/assets/img/logo-dark.svg"
-                     width="300" height="74" alt="{sitename}">
+                     width="306" height="74" alt="{sitename}">
             </a>
 
             <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="paavalikko">
@@ -341,7 +343,7 @@ TEMPLATE = """<!DOCTYPE html>
         <div class="footer__grid">
             <div class="footer__brand">
                 <img class="brand__logo brand__logo--footer" src="/assets/img/logo-dark.svg"
-                     width="300" height="74" alt="{sitename}">
+                     width="306" height="74" alt="{sitename}">
                 <p class="mt-1">{sitename}. Muutot, kuljetukset, mökkitalkkarointi, metsurityöt sekä apuvirta ja renkaanvaihdot Etelä-Karjalassa ja Kymenlaaksossa.</p>
                 <p class="mt-1 small">Y-tunnus: {ytunnus}</p>
             </div>

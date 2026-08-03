@@ -10,6 +10,7 @@ Tarkoitettu vain jaettavaa esikatselulinkkiä varten — ei julkaisuun.
 Käyttö: python3 preview_build.py [kohdetiedosto]
 """
 
+import base64
 import os
 import re
 import sys
@@ -39,6 +40,21 @@ def logo_data_uri():
         svg = fh.read().strip()
     quoted = urllib.parse.quote(svg, safe="~()*!.'")
     return "data:image/svg+xml," + quoted
+
+
+def inline_fonts(css):
+    """Upottaa woff2-tiedostot CSS:ään, koska esikatselussa ei ole /assets-polkua."""
+    def repl(m):
+        name = m.group(1)
+        path = os.path.join(ROOT, "assets", "fonts", name)
+        with open(path, "rb") as fh:
+            data = base64.b64encode(fh.read()).decode("ascii")
+        return f'url("data:font/woff2;base64,{data}") format("woff2")'
+
+    css, n = re.subn(r'url\("/assets/fonts/([^"]+)"\) format\("woff2"\)', repl, css)
+    if n == 0:
+        raise RuntimeError("Kirjasimia ei löytynyt CSS:stä — esikatselu jäisi varafonteille")
+    return css
 
 
 LOGO_URI = None
@@ -78,7 +94,7 @@ def main():
     out_path = sys.argv[1] if len(sys.argv) > 1 else os.path.join(ROOT, "esikatselu.html")
 
     with open(os.path.join(ROOT, "assets/css/style.css"), encoding="utf-8") as fh:
-        css = fh.read()
+        css = inline_fonts(fh.read())
 
     sections = []
     for route in ROUTES:
