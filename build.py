@@ -165,6 +165,11 @@ LOCAL_BUSINESS = {
         }
     ],
     "knowsLanguage": "fi",
+    "logo": {
+        "@type": "ImageObject",
+        "url": SITE["base"] + "/assets/img/logo.svg",
+    },
+    "image": SITE["base"] + "/assets/img/og-image.png",
 }
 
 
@@ -264,11 +269,17 @@ TEMPLATE = """<!DOCTYPE html>
     <meta property="og:title" content="{og_title}">
     <meta property="og:description" content="{description}">
     <meta property="og:url" content="{canonical}">
-    <meta name="twitter:card" content="summary">
+    <meta property="og:image" content="{base}/assets/img/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="{sitename} &ndash; muutot, mökkitalkkari, metsurityöt ja apuvirta">
+    <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="{og_title}">
     <meta name="twitter:description" content="{description}">
+    <meta name="twitter:image" content="{base}/assets/img/og-image.png">
 
     <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
     <link rel="stylesheet" href="/assets/css/style.css">
     {schema}
 </head>
@@ -286,9 +297,9 @@ TEMPLATE = """<!DOCTYPE html>
 <header class="site-header">
     <div class="wrap">
         <nav class="nav" aria-label="Päävalikko">
-            <a class="brand" href="/">
-                <span class="brand__mark">Paku<span>avuksi</span></span>
-                <span class="brand__sub">Tmi Jarno ja pakuavuksi</span>
+            <a class="brand" href="/" aria-label="Pakuavuksi &ndash; etusivulle">
+                <img class="brand__logo" src="/assets/img/logo-dark.svg"
+                     width="300" height="74" alt="{sitename}">
             </a>
 
             <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="paavalikko">
@@ -329,7 +340,8 @@ TEMPLATE = """<!DOCTYPE html>
     <div class="wrap">
         <div class="footer__grid">
             <div class="footer__brand">
-                <span class="brand__mark">Paku<span style="color:#cc4a10">avuksi</span></span>
+                <img class="brand__logo brand__logo--footer" src="/assets/img/logo-dark.svg"
+                     width="300" height="74" alt="{sitename}">
                 <p class="mt-1">{sitename}. Muutot, kuljetukset, mökkitalkkarointi, metsurityöt sekä apuvirta ja renkaanvaihdot Etelä-Karjalassa ja Kymenlaaksossa.</p>
                 <p class="mt-1 small">Y-tunnus: {ytunnus}</p>
             </div>
@@ -395,6 +407,7 @@ def render(page):
         description=page["description"],
         canonical=canonical,
         sitename=SITE["name"],
+        base=SITE["base"],
         nav=nav_html(path),
         body=page["body"],
         schema=jsonld(*schema_blocks),

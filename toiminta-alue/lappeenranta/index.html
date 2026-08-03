@@ -18,11 +18,17 @@
     <meta property="og:title" content="Muuttoapu Lappeenranta – opiskelijamuutot alk. 90 €">
     <meta property="og:description" content="Muuttoapu ja pakettiautokuljetukset Lappeenrannassa viikonloppuisin. Muutot 45 €/h, opiskelijamuutot alk. 90 €. Myös piha- ja metsurityöt.">
     <meta property="og:url" content="https://pakuavuksi.fi/toiminta-alue/lappeenranta/">
-    <meta name="twitter:card" content="summary">
+    <meta property="og:image" content="https://pakuavuksi.fi/assets/img/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Tmi Jarno ja pakuavuksi &ndash; muutot, mökkitalkkari, metsurityöt ja apuvirta">
+    <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Muuttoapu Lappeenranta – opiskelijamuutot alk. 90 €">
     <meta name="twitter:description" content="Muuttoapu ja pakettiautokuljetukset Lappeenrannassa viikonloppuisin. Muutot 45 €/h, opiskelijamuutot alk. 90 €. Myös piha- ja metsurityöt.">
+    <meta name="twitter:image" content="https://pakuavuksi.fi/assets/img/og-image.png">
 
     <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
     <link rel="stylesheet" href="/assets/css/style.css">
     <script type="application/ld+json">
 {
@@ -80,7 +86,12 @@
           "closes": "20:00"
         }
       ],
-      "knowsLanguage": "fi"
+      "knowsLanguage": "fi",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://pakuavuksi.fi/assets/img/logo.svg"
+      },
+      "image": "https://pakuavuksi.fi/assets/img/og-image.png"
     },
     {
       "@type": "BreadcrumbList",
@@ -123,9 +134,9 @@
 <header class="site-header">
     <div class="wrap">
         <nav class="nav" aria-label="Päävalikko">
-            <a class="brand" href="/">
-                <span class="brand__mark">Paku<span>avuksi</span></span>
-                <span class="brand__sub">Tmi Jarno ja pakuavuksi</span>
+            <a class="brand" href="/" aria-label="Pakuavuksi &ndash; etusivulle">
+                <img class="brand__logo" src="/assets/img/logo-dark.svg"
+                     width="300" height="74" alt="Tmi Jarno ja pakuavuksi">
             </a>
 
             <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="paavalikko">
@@ -249,7 +260,8 @@
     <div class="wrap">
         <div class="footer__grid">
             <div class="footer__brand">
-                <span class="brand__mark">Paku<span style="color:#cc4a10">avuksi</span></span>
+                <img class="brand__logo brand__logo--footer" src="/assets/img/logo-dark.svg"
+                     width="300" height="74" alt="Tmi Jarno ja pakuavuksi">
                 <p class="mt-1">Tmi Jarno ja pakuavuksi. Muutot, kuljetukset, mökkitalkkarointi, metsurityöt sekä apuvirta ja renkaanvaihdot Etelä-Karjalassa ja Kymenlaaksossa.</p>
                 <p class="mt-1 small">Y-tunnus: 3593123-5</p>
             </div>

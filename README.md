@@ -39,6 +39,38 @@ on säilytetty sellaisinaan, jotta hakukonenäkyvyys ei katoa uudistuksessa.
 - Semanttinen HTML, yksi `<h1>` sivua kohti, murupolut
 - Ei render-estäviä ulkoisia resursseja
 
+## Logo
+
+Logo on eurooppalainen pakettiauto sivuprofiilina ja nimi pienenä kursiivina
+aivan sen perässä. Teksti on muunnettu poluiksi (Liberation Sans Bold Italic,
+metrisesti sama kuin Arial Bold Italic), joten logo näyttää samalta joka
+koneella ja painossa — fonttia ei tarvitse asentaa.
+
+| Tiedosto | Käyttö |
+|---|---|
+| `assets/img/logo-dark.svg` | Tummalle pohjalle — sivuston ylä- ja alapalkki |
+| `assets/img/logo.svg` | Vaalealle pohjalle — asiakirjat, valkoinen tausta |
+| `assets/img/logo-mono.svg` | Yksivärinen tummalle tekstille — leimat, laskut |
+| `assets/img/logo-mono-light.svg` | Yksivärinen vaalealle — tumma tausta |
+| `assets/img/favicon.svg` | Selaimen välilehti |
+| `assets/img/apple-touch-icon.png` | iOS-kotinäytön kuvake (180 × 180) |
+| `assets/img/og-image.png` | Jakokuva somelinkkeihin (1200 × 630) |
+
+Logot luodaan `logo_build.py`-skriptillä:
+
+```bash
+python3 logo_build.py
+```
+
+Skripti ei tarvitse ulkoisia kirjastoja: korin muoto ja kirjainten polut ovat
+tiedostossa valmiina. `apple-touch-icon.png` ja `og-image.png` on renderöity
+kertaalleen selaimella SVG:istä, eikä niitä tarvitse luoda uudelleen ellei
+logo muutu.
+
+**Pienin suositeltu koko** on noin 160 pikseliä leveä. Sitä pienempänä nimen
+kursiivi käy vaikealukuiseksi — käytä silloin pelkkää `favicon.svg`-merkkiä.
+Auton kylkiteippaukseen kannattaa suurentaa nimeä erikseen suhteessa pakuun.
+
 ## Kehittäminen
 
 Sivut luodaan `build.py`-skriptillä, jotta navigaatio, alatunniste ja
@@ -53,6 +85,8 @@ python3 -m http.server 8000      # esikatselu osoitteessa http://localhost:8000
 - `content.py` — kaikkien sivujen tekstit ja hinnat
 - `assets/css/style.css` — tyylit
 - `assets/js/main.js` — mobiilivalikko ja lomakkeen käsittely
+- `logo_build.py` — logotiedostot
+- `preview_build.py` — yhden tiedoston esikatselu jaettavaksi
 
 Valmiit HTML-tiedostot on versioitu repoon, joten sivuston voi julkaista
 sellaisenaan ilman Pythonia.

@@ -13,6 +13,7 @@ Käyttö: python3 preview_build.py [kohdetiedosto]
 import os
 import re
 import sys
+import urllib.parse
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 
@@ -30,6 +31,19 @@ ROUTES = [
 ]
 
 
+def logo_data_uri():
+    """Logo data-URI:na, jotta se näkyy myös yhden tiedoston esikatselussa,
+    jossa /assets-polkua ei ole."""
+    path = os.path.join(ROOT, "assets", "img", "logo-dark.svg")
+    with open(path, encoding="utf-8") as fh:
+        svg = fh.read().strip()
+    quoted = urllib.parse.quote(svg, safe="~()*!.'")
+    return "data:image/svg+xml," + quoted
+
+
+LOGO_URI = None
+
+
 def body_of(route):
     path = "index.html" if route == "/" else os.path.join(route.strip("/"), "index.html")
     with open(os.path.join(ROOT, path), encoding="utf-8") as fh:
@@ -40,6 +54,14 @@ def body_of(route):
     body = re.sub(r'<script src="[^"]*"[^>]*></script>', "", body)
     # Sisäiset linkit hash-muotoon; puhelin, sähköposti ja WhatsApp jätetään ennalleen
     body = re.sub(r'href="(/(?!assets/)[^"]*)"', r'href="#\1"', body)
+    # Logo upotetaan CSS-taustakuvana. <img>-tagit korvataan, jotta sama
+    # data-URI ei toistu jokaisella sivulla ja tiedosto pysy pienenä.
+    body = re.sub(
+        r'<img class="brand__logo( brand__logo--footer)?"[^>]*alt="([^"]*)"[^>]*>',
+        lambda m: f'<span class="brand__logo{m.group(1) or ""} pv-logo" '
+                  f'role="img" aria-label="{m.group(2)}"></span>',
+        body,
+    )
     # Ohita-linkki toimisi vain ensimmäisellä sivulla, joten poistetaan kopiot
     if route != "/":
         body = body.replace(
@@ -51,6 +73,8 @@ def body_of(route):
 
 
 def main():
+    global LOGO_URI
+    LOGO_URI = logo_data_uri()
     out_path = sys.argv[1] if len(sys.argv) > 1 else os.path.join(ROOT, "esikatselu.html")
 
     with open(os.path.join(ROOT, "assets/css/style.css"), encoding="utf-8") as fh:
@@ -83,6 +107,12 @@ def main():
 .pv-bar button:hover { background: #2b3038; color: #fff; }
 .pv-bar[hidden] { display: none; }
 body.pv-has-bar { padding-bottom: 52px; }
+.pv-logo {
+  display: block;
+  aspect-ratio: 300 / 74;
+  width: auto;
+  background: url("LOGO_URI_PLACEHOLDER") no-repeat center / contain;
+}
 """
 
     script = """
@@ -163,6 +193,8 @@ body.pv-has-bar { padding-bottom: 52px; }
 })();
 """
 
+    extra_css = extra_css.replace("LOGO_URI_PLACEHOLDER", LOGO_URI)
+
     page = f"""<title>Pakuavuksi – sivuston esikatselu</title>
 <style>
 {css}
@@ -172,7 +204,7 @@ body.pv-has-bar { padding-bottom: 52px; }
 {chr(10).join(sections)}
 
 <div class="pv-bar" id="pv-bar">
-  <span><strong>Esikatselu</strong> &mdash; kaikki 17 sivua yhdessä tiedostossa. Nykyinen sivu: <code id="pv-route">/</code></span>
+  <span><strong>Esikatselu</strong> &mdash; kaikki 16 sivua yhdessä tiedostossa. Nykyinen sivu: <code id="pv-route">/</code></span>
   <span>Puhelin-, WhatsApp- ja sähköpostilinkit toimivat normaalisti.</span>
   <button type="button" id="pv-close">Piilota</button>
 </div>
